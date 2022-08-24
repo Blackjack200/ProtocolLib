@@ -19,11 +19,17 @@ class TcpServer implements ServerInterface {
 	private array $incoming = [];
 	/** @var float[] */
 	private array $incomingTime = [];
+	private InetAddress $addr;
 
 	public function __construct(InetAddress $addr, Logger $logger) {
 		$this->socket = new TcpServerSocket($addr);
+		$this->addr = $addr;
 		$this->logger = $logger;
 	}
+
+	public function getAddr() : InetAddress { return $this->addr; }
+
+	public function getLogger() : Logger { return $this->logger; }
 
 	public function listen() : void {
 		$this->acceptIncomingConnection();

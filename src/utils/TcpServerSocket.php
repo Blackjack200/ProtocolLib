@@ -29,7 +29,10 @@ class TcpServerSocket {
 		$this->socket = $socket;
 	}
 
-	public function close() : void { socket_close($this->socket); }
+	public function close() : void {
+		@socket_shutdown($this->socket);
+		@socket_close($this->socket);
+	}
 
 	public function accept(Closure $onDisconnected) : ?TcpClientSocket {
 		$conn = socket_accept($this->socket);

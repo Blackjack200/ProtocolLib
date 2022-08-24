@@ -19,9 +19,13 @@ class InetAddress {
 		$this->version = $version;
 	}
 
+	public static function auto(string $addr, int $port) : self {
+		return new self($addr, $port, filter_var($addr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ? 4 : 6);
+	}
+
 	public static function fromSocket(Socket $socket) : self {
 		@socket_getpeername($socket, $addr, $port);
-		return new self($addr, $port, filter_var($addr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ? 4 : 6);
+		return self::auto($addr, $port);
 	}
 
 	public function getIP() : string {
