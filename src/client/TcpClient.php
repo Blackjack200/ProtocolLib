@@ -6,13 +6,15 @@ use Blackjack200\ProtocolLib\ClientInterface;
 use Blackjack200\ProtocolLib\protocol\Messages;
 use Blackjack200\ProtocolLib\utils\InetAddress;
 use Blackjack200\ProtocolLib\utils\TcpClientSocket;
+use Closure;
 
 class TcpClient implements ClientInterface {
 	protected TcpClientSocket $socket;
 	private bool $open = false;
 	private string $nodeId;
 	private string $type;
-
+	/** @var \Closure[] */
+	private array $selectCallback = [];
 
 	public function __construct(InetAddress $serverAddr, string $nodeId, string $type) {
 		$this->type = $type;
@@ -53,7 +55,11 @@ class TcpClient implements ClientInterface {
 					break;
 				case 'SelectServerResponse':
 					[$type, $nodeId] = $msg->get();
-					var_dump("selected $type $nodeId");
+					$calArr = $this->selectCallback[$type] ?? [];
+					unset($this->selectCallback[$type]);
+					foreach ($calArr as $f) {
+						$f($nodeId);
+					}
 					break;
 			}
 		}
@@ -65,8 +71,12 @@ class TcpClient implements ClientInterface {
 
 	public function getType() : string { return $this->type; }
 
-	public function select(string $type) : void {
+	/**
+	 * @param \Closure(string):void $c
+	 */
+	public function select(string $type, Closure $c) : void {
 		$this->socket->write(Messages::selectServerRequest($type));
+		$this->selectCallback[$type][] = $c;
 	}
 
 	public function broadcast(string $topic, ...$param) : void {
