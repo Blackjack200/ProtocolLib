@@ -19,7 +19,7 @@ while (true) {
 			echo "----{$client->getNodeId()}----\n";
 			$client->tick(true, ['iplayfordev']);
 			if ($client->isOpen()) {
-				$client->select("test");
+				$client->select("test", static fn() => null);
 			}
 			echo "-----------\n";
 		}

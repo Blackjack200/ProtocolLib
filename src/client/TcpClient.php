@@ -72,7 +72,7 @@ class TcpClient implements ClientInterface {
 	public function getType() : string { return $this->type; }
 
 	/**
-	 * @param \Closure(string):void $c
+	 * @param \Closure(?string):void $c
 	 */
 	public function select(string $type, Closure $c) : void {
 		$this->socket->write(Messages::selectServerRequest($type));
