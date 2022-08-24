@@ -54,7 +54,7 @@ class TcpServer implements ServerInterface {
 				$session = new ClientSession($clientSocket, $nodeId, $type);
 				if (isset($this->sessions[$nodeId])) {
 					$session->write(Messages::loginResponse(Messages::LOGIN_STATUS_FAILED));
-					//$clientSocket->close();
+					$clientSocket->close();
 				} else {
 					$this->sessions[$nodeId] = $session;
 					$session->write(Messages::loginResponse(Messages::LOGIN_STATUS_SUCCESS));
@@ -92,8 +92,9 @@ class TcpServer implements ServerInterface {
 						break;
 					case Messages::SELECT_SERVER_REQUEST:
 						[$type] = $msg->get();
-						$session->write(Messages::selectServerResponse($type, $this->select($type)));
-						$this->logger->debug("[*] select request nodeId={$session->getNodeId()} type=$type");
+						$t = $this->select($type);
+						$session->write(Messages::selectServerResponse($type, $t));
+						$this->logger->debug("[*] select request nodeId={$session->getNodeId()} type=$type ret=$t");
 						break;
 					case Messages::BROADCAST:
 						foreach ($this->sessions as $s) {

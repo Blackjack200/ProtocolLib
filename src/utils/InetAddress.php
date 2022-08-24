@@ -25,6 +25,9 @@ class InetAddress {
 
 	public static function fromSocket(Socket $socket) : self {
 		@socket_getpeername($socket, $addr, $port);
+		if ($addr === null || $port === null) {
+			throw new \RuntimeException("invalid socket");
+		}
 		return self::auto($addr, $port);
 	}
 

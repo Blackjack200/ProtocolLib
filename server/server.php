@@ -60,7 +60,7 @@ function loadConfig() : array {
 	return yaml_parse_file('config.yml');
 }
 
-$logger = new MainLogger(false);
+$logger = new MainLogger(true);
 $config = loadConfig();
 
 $running = true;

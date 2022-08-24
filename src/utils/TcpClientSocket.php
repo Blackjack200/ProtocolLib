@@ -34,6 +34,7 @@ class TcpClientSocket {
 	}
 
 	public function getAddr() : InetAddress { return $this->addr; }
+
 	public function getWriter() : BufferedWriter { return $this->writer; }
 
 	public function isClosed() : bool { return $this->writer->isClosed(); }
