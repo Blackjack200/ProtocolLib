@@ -2,6 +2,7 @@
 
 use Blackjack200\ProtocolLib\client\TcpClient;
 use Blackjack200\ProtocolLib\utils\InetAddress;
+use Blackjack200\ProtocolLib\utils\MainLogger;
 
 require 'vendor/autoload.php';
 function createClient($i) : TcpClient {
@@ -9,19 +10,28 @@ function createClient($i) : TcpClient {
 }
 
 /** @var TcpClient[] $clients */
-$clients = [];
+/*$clients = [];
 for ($i = 0; $i < 1000; $i++) {
 	$clients[] = createClient($i+1);
 }
 while (true) {
 	foreach ($clients as $client) {
-		if (!$client->isDisconnected()) {
-			echo "----{$client->getNodeId()}----\n";
-			$client->tick(true, ['iplayfordev']);
-			if ($client->isOpen()) {
-				$client->select("test", static fn() => null);
-			}
-			echo "-----------\n";
-		}
+*/
+$logger = new MainLogger();
+$client = createClient(random_int(1, 9));
+$client->setHandleBroadcastFunc(static function(string $topic, string $source, array $data) use ($logger) : void {
+	if ($topic === "chat") {
+		[$msg] = $data;
+		$logger->info("received broadcast $topic from $source: $msg");
 	}
+});
+$client->login();
+while (!$client->isDisconnected()) {
+	$client->tick(true, ['iplayfordev']);
+	$client->broadcast("chat", "IPlayfordev: test");
+	sleep(1);
 }
+/*
+}
+}
+*/

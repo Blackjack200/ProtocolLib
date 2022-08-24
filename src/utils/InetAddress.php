@@ -20,7 +20,7 @@ class InetAddress {
 	}
 
 	public static function fromSocket(Socket $socket) : self {
-		socket_getpeername($socket, $addr, $port);
+		@socket_getpeername($socket, $addr, $port);
 		return new self($addr, $port, filter_var($addr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ? 4 : 6);
 	}
 

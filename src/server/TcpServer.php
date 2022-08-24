@@ -42,7 +42,7 @@ class TcpServer implements ServerInterface {
 	private function handleIncomingMessages() : void {
 		foreach (BufferedWriter::selectRead(...$this->incoming) as $clientSocket) {
 			$msg = $clientSocket->read();
-			if ($msg !== null && $msg->getType() === 'LoginRequest') {
+			if ($msg !== null && $msg->getType() === Messages::LOGIN_REQUEST) {
 				unset($this->incoming[spl_object_hash($clientSocket)], $this->incomingTime[spl_object_hash($clientSocket)]);
 				[$nodeId, $type] = $msg->get();
 				$session = new ClientSession($clientSocket, $nodeId, $type);
@@ -79,15 +79,22 @@ class TcpServer implements ServerInterface {
 			$msg = $session->read();
 			if ($msg !== null) {
 				switch ($msg->getType()) {
-					case 'ClientHeartbeat':
+					case Messages::CLIENT_HEARTBEAT:
 						[$nodeId, $canJoin, $onlinePlayers] = $msg->get();
 						$session->heartbeat($canJoin, $onlinePlayers);
 						$this->logger->debug("[*] heartbeat nodeId={$session->getNodeId()} canJoin=$canJoin online=" . implode(",", $onlinePlayers));
 						break;
-					case 'SelectServerRequest':
+					case Messages::SELECT_SERVER_REQUEST:
 						[$type] = $msg->get();
 						$session->write(Messages::selectServerResponse($type, $this->select($type)));
 						$this->logger->debug("[*] select request nodeId={$session->getNodeId()} type=$type");
+						break;
+					case Messages::BROADCAST:
+						foreach ($this->sessions as $s) {
+							if ($s !== $session) {
+								$s->write($msg);
+							}
+						}
 						break;
 				}
 			}
