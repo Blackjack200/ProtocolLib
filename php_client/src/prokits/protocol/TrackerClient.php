@@ -5,7 +5,7 @@ namespace prokits\protocol;
 
 /**
  */
-class ServerClient extends \Grpc\BaseStub {
+class TrackerClient extends \Grpc\BaseStub {
 
     /**
      * @param string $hostname hostname
@@ -24,9 +24,23 @@ class ServerClient extends \Grpc\BaseStub {
      */
     public function Login(\prokits\protocol\LoginRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/Server/Login',
+        return $this->_simpleRequest('/Tracker/Login',
         $argument,
         ['\prokits\protocol\LoginResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \prokits\protocol\NodeInfo $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall
+     */
+    public function Heartbeat(\prokits\protocol\NodeInfo $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/Tracker/Heartbeat',
+        $argument,
+        ['\prokits\protocol\HeartbeatResponse', 'decode'],
         $metadata, $options);
     }
 
@@ -38,7 +52,7 @@ class ServerClient extends \Grpc\BaseStub {
      */
     public function GetAllPerformanceInfo(\Google\Protobuf\GPBEmpty $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/Server/GetAllPerformanceInfo',
+        return $this->_simpleRequest('/Tracker/GetAllPerformanceInfo',
         $argument,
         ['\prokits\protocol\PerformanceInfoResponse', 'decode'],
         $metadata, $options);
@@ -52,23 +66,37 @@ class ServerClient extends \Grpc\BaseStub {
      */
     public function Broadcast(\prokits\protocol\BroadcastMessage $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/Server/Broadcast',
+        return $this->_simpleRequest('/Tracker/Broadcast',
         $argument,
         ['\Google\Protobuf\GPBEmpty', 'decode'],
         $metadata, $options);
     }
 
     /**
-     * @param \prokits\protocol\NodeInfo $argument input argument
+     * @param \prokits\protocol\SelectServerRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      * @return \Grpc\UnaryCall
      */
-    public function Heartbeat(\prokits\protocol\NodeInfo $argument,
+    public function Select(\prokits\protocol\SelectServerRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/Server/Heartbeat',
+        return $this->_simpleRequest('/Tracker/Select',
         $argument,
-        ['\prokits\protocol\HeartbeatResponse', 'decode'],
+        ['\prokits\protocol\SelectServerResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \prokits\protocol\QuitRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall
+     */
+    public function Quit(\prokits\protocol\QuitRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/Tracker/Quit',
+        $argument,
+        ['\Google\Protobuf\GPBEmpty', 'decode'],
         $metadata, $options);
     }
 

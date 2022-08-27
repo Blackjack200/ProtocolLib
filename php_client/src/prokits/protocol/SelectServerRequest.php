@@ -9,22 +9,18 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>LoginRequest</code>
+ * Generated from protobuf message <code>SelectServerRequest</code>
  */
-class LoginRequest extends \Google\Protobuf\Internal\Message
+class SelectServerRequest extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>string node_id = 1;</code>
      */
     protected $node_id = '';
     /**
-     * Generated from protobuf field <code>string type = 2;</code>
+     * Generated from protobuf field <code>string requested_ype = 2;</code>
      */
-    protected $type = '';
-    /**
-     * Generated from protobuf field <code>.NodeInfo info = 3;</code>
-     */
-    protected $info = null;
+    protected $requested_ype = '';
 
     /**
      * Constructor.
@@ -33,8 +29,7 @@ class LoginRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $node_id
-     *     @type string $type
-     *     @type \prokits\protocol\NodeInfo $info
+     *     @type string $requested_ype
      * }
      */
     public function __construct($data = NULL) {
@@ -65,55 +60,23 @@ class LoginRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string type = 2;</code>
+     * Generated from protobuf field <code>string requested_ype = 2;</code>
      * @return string
      */
-    public function getType()
+    public function getRequestedYpe()
     {
-        return $this->type;
+        return $this->requested_ype;
     }
 
     /**
-     * Generated from protobuf field <code>string type = 2;</code>
+     * Generated from protobuf field <code>string requested_ype = 2;</code>
      * @param string $var
      * @return $this
      */
-    public function setType($var)
+    public function setRequestedYpe($var)
     {
         GPBUtil::checkString($var, True);
-        $this->type = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>.NodeInfo info = 3;</code>
-     * @return \prokits\protocol\NodeInfo|null
-     */
-    public function getInfo()
-    {
-        return $this->info;
-    }
-
-    public function hasInfo()
-    {
-        return isset($this->info);
-    }
-
-    public function clearInfo()
-    {
-        unset($this->info);
-    }
-
-    /**
-     * Generated from protobuf field <code>.NodeInfo info = 3;</code>
-     * @param \prokits\protocol\NodeInfo $var
-     * @return $this
-     */
-    public function setInfo($var)
-    {
-        GPBUtil::checkMessage($var, \prokits\protocol\NodeInfo::class);
-        $this->info = $var;
+        $this->requested_ype = $var;
 
         return $this;
     }

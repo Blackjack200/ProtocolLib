@@ -10,16 +10,17 @@ message NodePerformanceInfo {
 }
 
 message NodeInfo{
-  bool canJoin = 1;
-  repeated string online_players = 2;
-  int32 max_online_players = 3;
-  NodePerformanceInfo performance_info = 4;
+  string node_id = 1;
+  bool canJoin = 2;
+  repeated string online_players = 3;
+  int32 max_online_players = 4;
+  NodePerformanceInfo performance_info = 5;
 }
 
 message LoginRequest{
   string node_id = 1;
   string type = 2;
-  NodePerformanceInfo info = 3;
+  NodeInfo info = 3;
 }
 
 enum LoginStatusCode{
@@ -30,6 +31,10 @@ enum LoginStatusCode{
 message LoginResponse{
   LoginStatusCode status = 1;
   optional string message = 2;
+}
+
+message QuitRequest {
+  string node_id = 1;
 }
 
 message PerformanceInfoResponse{
@@ -44,4 +49,13 @@ message BroadcastMessage{
 
 message HeartbeatResponse {
   repeated BroadcastMessage msg = 1;
+}
+
+message SelectServerRequest{
+  string node_id = 1;
+  string requested_ype = 2;
+}
+
+message SelectServerResponse {
+  optional string target_node_id = 1;
 }

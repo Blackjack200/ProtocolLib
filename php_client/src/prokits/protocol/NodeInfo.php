@@ -14,19 +14,23 @@ use Google\Protobuf\Internal\GPBUtil;
 class NodeInfo extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>bool canJoin = 1;</code>
+     * Generated from protobuf field <code>string node_id = 1;</code>
+     */
+    protected $node_id = '';
+    /**
+     * Generated from protobuf field <code>bool canJoin = 2;</code>
      */
     protected $canJoin = false;
     /**
-     * Generated from protobuf field <code>repeated string online_players = 2;</code>
+     * Generated from protobuf field <code>repeated string online_players = 3;</code>
      */
     private $online_players;
     /**
-     * Generated from protobuf field <code>int32 max_online_players = 3;</code>
+     * Generated from protobuf field <code>int32 max_online_players = 4;</code>
      */
     protected $max_online_players = 0;
     /**
-     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 4;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 5;</code>
      */
     protected $performance_info = null;
 
@@ -36,6 +40,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
+     *     @type string $node_id
      *     @type bool $canJoin
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $online_players
      *     @type int $max_online_players
@@ -48,7 +53,29 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>bool canJoin = 1;</code>
+     * Generated from protobuf field <code>string node_id = 1;</code>
+     * @return string
+     */
+    public function getNodeId()
+    {
+        return $this->node_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string node_id = 1;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setNodeId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->node_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool canJoin = 2;</code>
      * @return bool
      */
     public function getCanJoin()
@@ -57,7 +84,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>bool canJoin = 1;</code>
+     * Generated from protobuf field <code>bool canJoin = 2;</code>
      * @param bool $var
      * @return $this
      */
@@ -70,7 +97,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string online_players = 2;</code>
+     * Generated from protobuf field <code>repeated string online_players = 3;</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getOnlinePlayers()
@@ -79,7 +106,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string online_players = 2;</code>
+     * Generated from protobuf field <code>repeated string online_players = 3;</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -92,7 +119,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 max_online_players = 3;</code>
+     * Generated from protobuf field <code>int32 max_online_players = 4;</code>
      * @return int
      */
     public function getMaxOnlinePlayers()
@@ -101,7 +128,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 max_online_players = 3;</code>
+     * Generated from protobuf field <code>int32 max_online_players = 4;</code>
      * @param int $var
      * @return $this
      */
@@ -114,7 +141,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 4;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 5;</code>
      * @return \prokits\protocol\NodePerformanceInfo|null
      */
     public function getPerformanceInfo()
@@ -133,7 +160,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 4;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 5;</code>
      * @param \prokits\protocol\NodePerformanceInfo $var
      * @return $this
      */

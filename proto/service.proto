@@ -6,9 +6,11 @@ import "google/protobuf/empty.proto";
 option go_package = "proto/";
 option php_namespace = "prokits\\protocol";
 
-service Server{
+service Tracker{
   rpc Login(LoginRequest) returns(LoginResponse);
+  rpc Heartbeat(NodeInfo) returns(HeartbeatResponse);
   rpc GetAllPerformanceInfo(google.protobuf.Empty) returns(PerformanceInfoResponse);
   rpc Broadcast(BroadcastMessage) returns(google.protobuf.Empty);
-  rpc Heartbeat(NodeInfo) returns(HeartbeatResponse);
+  rpc Select(SelectServerRequest) returns(SelectServerResponse);
+  rpc Quit(QuitRequest) returns(google.protobuf.Empty);
 }
