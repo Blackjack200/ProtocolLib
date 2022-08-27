@@ -1,0 +1,48 @@
+syntax = "proto3";
+package ProtocolLib;
+
+option go_package = "github.com/blackjack200/protocollib";
+option php_namespace = "prokits\\protocol";
+
+message NodePerformanceInfo {
+  int32 tps = 1;
+  float average_tps = 2;
+  reserved 3, 6;
+}
+
+message NodeInfo{
+  bool canJoin = 1;
+  repeated string online_players = 2;
+  int32 max_online_players = 3;
+  NodePerformanceInfo performance_info = 4;
+}
+
+message LoginRequest{
+  string node_id = 1;
+  string type = 2;
+  NodePerformanceInfo info = 3;
+}
+
+enum LoginStatusCode{
+  SUCCESS = 0;
+  FAILED = 1;
+}
+
+message LoginResponse{
+  LoginStatusCode status = 1;
+  optional string message = 2;
+}
+
+message PerformanceInfoResponse{
+  map<string, NodePerformanceInfo> info = 1;
+}
+
+message BroadcastMessage{
+  string node_id = 1;
+  string topic = 2;
+  string data = 3;
+}
+
+message HeartbeatResponse {
+  repeated BroadcastMessage msg = 1;
+}

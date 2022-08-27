@@ -1,0 +1,15 @@
+syntax = "proto3";
+package ProtocolLib;
+
+import "proto/define.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/blackjack200/protocollib";
+option php_namespace = "prokits\\protocol";
+
+service Server{
+  rpc Login(LoginRequest) returns(LoginResponse);
+  rpc GetAllPerformanceInfo(google.protobuf.Empty) returns(PerformanceInfoResponse);
+  rpc Broadcast(BroadcastMessage) returns(google.protobuf.Empty);
+  rpc Heartbeat(NodeInfo) returns(HeartbeatResponse);
+}

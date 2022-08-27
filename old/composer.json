@@ -9,7 +9,7 @@
   "require": {
     "ext-igbinary": "*",
     "ext-sockets": "*",
-    "pocketmine/log": "^0.4.0",
+    "vendor/pocketmine/log": "^0.4.0",
     "ext-yaml": "*",
     "ext-pcntl": "*"
   }
