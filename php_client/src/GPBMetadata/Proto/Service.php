@@ -18,13 +18,13 @@ class Service
         \GPBMetadata\Google\Protobuf\GPBEmpty::initOnce();
         $pool->internalAddGeneratedFile(
             '
-´
-proto/service.protoProtocolLibgoogle/protobuf/empty.proto2ß
-Server>
-Login.ProtocolLib.LoginRequest.ProtocolLib.LoginResponseU
-GetAllPerformanceInfo.google.protobuf.Empty$.ProtocolLib.PerformanceInfoResponseB
-	Broadcast.ProtocolLib.BroadcastMessage.google.protobuf.EmptyB
-	Heartbeat.ProtocolLib.NodeInfo.ProtocolLib.HeartbeatResponseB8Z#github.com/blackjack200/protocollib prokits\\protocolbproto3'
+π
+proto/service.protogoogle/protobuf/empty.proto2ﬂ
+Server&
+Login.LoginRequest.LoginResponseI
+GetAllPerformanceInfo.google.protobuf.Empty.PerformanceInfoResponse6
+	Broadcast.BroadcastMessage.google.protobuf.Empty*
+	Heartbeat	.NodeInfo.HeartbeatResponseBZproto/ prokits\\protocolbproto3'
         , true);
 
         static::$is_initialized = true;

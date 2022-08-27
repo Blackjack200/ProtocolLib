@@ -9,7 +9,7 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>ProtocolLib.LoginRequest</code>
+ * Generated from protobuf message <code>LoginRequest</code>
  */
 class LoginRequest extends \Google\Protobuf\Internal\Message
 {
@@ -22,7 +22,7 @@ class LoginRequest extends \Google\Protobuf\Internal\Message
      */
     protected $type = '';
     /**
-     * Generated from protobuf field <code>.ProtocolLib.NodePerformanceInfo info = 3;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo info = 3;</code>
      */
     protected $info = null;
 
@@ -87,7 +87,7 @@ class LoginRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ProtocolLib.NodePerformanceInfo info = 3;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo info = 3;</code>
      * @return \prokits\protocol\NodePerformanceInfo|null
      */
     public function getInfo()
@@ -106,7 +106,7 @@ class LoginRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ProtocolLib.NodePerformanceInfo info = 3;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo info = 3;</code>
      * @param \prokits\protocol\NodePerformanceInfo $var
      * @return $this
      */

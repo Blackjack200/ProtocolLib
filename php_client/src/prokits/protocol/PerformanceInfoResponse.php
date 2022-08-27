@@ -9,12 +9,12 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>ProtocolLib.PerformanceInfoResponse</code>
+ * Generated from protobuf message <code>PerformanceInfoResponse</code>
  */
 class PerformanceInfoResponse extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>map<string, .ProtocolLib.NodePerformanceInfo> info = 1;</code>
+     * Generated from protobuf field <code>map<string, .NodePerformanceInfo> info = 1;</code>
      */
     private $info;
 
@@ -33,7 +33,7 @@ class PerformanceInfoResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, .ProtocolLib.NodePerformanceInfo> info = 1;</code>
+     * Generated from protobuf field <code>map<string, .NodePerformanceInfo> info = 1;</code>
      * @return \Google\Protobuf\Internal\MapField
      */
     public function getInfo()
@@ -42,7 +42,7 @@ class PerformanceInfoResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, .ProtocolLib.NodePerformanceInfo> info = 1;</code>
+     * Generated from protobuf field <code>map<string, .NodePerformanceInfo> info = 1;</code>
      * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
      */

@@ -9,12 +9,12 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>ProtocolLib.HeartbeatResponse</code>
+ * Generated from protobuf message <code>HeartbeatResponse</code>
  */
 class HeartbeatResponse extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>repeated .ProtocolLib.BroadcastMessage msg = 1;</code>
+     * Generated from protobuf field <code>repeated .BroadcastMessage msg = 1;</code>
      */
     private $msg;
 
@@ -33,7 +33,7 @@ class HeartbeatResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .ProtocolLib.BroadcastMessage msg = 1;</code>
+     * Generated from protobuf field <code>repeated .BroadcastMessage msg = 1;</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getMsg()
@@ -42,7 +42,7 @@ class HeartbeatResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .ProtocolLib.BroadcastMessage msg = 1;</code>
+     * Generated from protobuf field <code>repeated .BroadcastMessage msg = 1;</code>
      * @param array<\prokits\protocol\BroadcastMessage>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */

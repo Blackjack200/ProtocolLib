@@ -1,7 +1,6 @@
 syntax = "proto3";
-package ProtocolLib;
 
-option go_package = "github.com/blackjack200/protocollib";
+option go_package = "proto/";
 option php_namespace = "prokits\\protocol";
 
 message NodePerformanceInfo {

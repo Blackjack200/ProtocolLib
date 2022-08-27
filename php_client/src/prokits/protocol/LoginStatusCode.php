@@ -7,7 +7,7 @@ namespace prokits\protocol;
 use UnexpectedValueException;
 
 /**
- * Protobuf type <code>ProtocolLib.LoginStatusCode</code>
+ * Protobuf type <code>LoginStatusCode</code>
  */
 class LoginStatusCode
 {

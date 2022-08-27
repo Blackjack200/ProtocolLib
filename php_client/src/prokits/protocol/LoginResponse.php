@@ -9,12 +9,12 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>ProtocolLib.LoginResponse</code>
+ * Generated from protobuf message <code>LoginResponse</code>
  */
 class LoginResponse extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>.ProtocolLib.LoginStatusCode status = 1;</code>
+     * Generated from protobuf field <code>.LoginStatusCode status = 1;</code>
      */
     protected $status = 0;
     /**
@@ -38,7 +38,7 @@ class LoginResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ProtocolLib.LoginStatusCode status = 1;</code>
+     * Generated from protobuf field <code>.LoginStatusCode status = 1;</code>
      * @return int
      */
     public function getStatus()
@@ -47,7 +47,7 @@ class LoginResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ProtocolLib.LoginStatusCode status = 1;</code>
+     * Generated from protobuf field <code>.LoginStatusCode status = 1;</code>
      * @param int $var
      * @return $this
      */

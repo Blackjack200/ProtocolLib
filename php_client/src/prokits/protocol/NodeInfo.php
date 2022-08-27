@@ -9,7 +9,7 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>ProtocolLib.NodeInfo</code>
+ * Generated from protobuf message <code>NodeInfo</code>
  */
 class NodeInfo extends \Google\Protobuf\Internal\Message
 {
@@ -26,7 +26,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
      */
     protected $max_online_players = 0;
     /**
-     * Generated from protobuf field <code>.ProtocolLib.NodePerformanceInfo performance_info = 4;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 4;</code>
      */
     protected $performance_info = null;
 
@@ -114,7 +114,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ProtocolLib.NodePerformanceInfo performance_info = 4;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 4;</code>
      * @return \prokits\protocol\NodePerformanceInfo|null
      */
     public function getPerformanceInfo()
@@ -133,7 +133,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ProtocolLib.NodePerformanceInfo performance_info = 4;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 4;</code>
      * @param \prokits\protocol\NodePerformanceInfo $var
      * @return $this
      */

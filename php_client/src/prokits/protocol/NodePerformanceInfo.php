@@ -9,7 +9,7 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>ProtocolLib.NodePerformanceInfo</code>
+ * Generated from protobuf message <code>NodePerformanceInfo</code>
  */
 class NodePerformanceInfo extends \Google\Protobuf\Internal\Message
 {
