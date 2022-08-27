@@ -60,7 +60,7 @@ function loadConfig() : array {
 	return yaml_parse_file('config.yml');
 }
 
-$logger = new MainLogger(true);
+$logger = new MainLogger(false);
 $config = loadConfig();
 
 $running = true;
@@ -75,6 +75,7 @@ $logger->info("started server on {$server->getAddr()->toString()}");
 
 while ($running) {
 	$server->listen();
+	usleep(2500);
 }
 
 $server->shutdown();

@@ -98,9 +98,9 @@ class TcpServer implements ServerInterface {
 						break;
 					case Messages::BROADCAST:
 						foreach ($this->sessions as $s) {
-							if ($s !== $session) {
+							//if ($s !== $session) {
 								$s->write($msg);
-							}
+							//}
 						}
 						break;
 				}
