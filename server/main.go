@@ -16,10 +16,12 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
-	var opts []grpc.ServerOption
-	s := grpc.NewServer(opts...)
-	proto.RegisterTrackerServer(s, service.NewTracker())
+	s := grpc.NewServer()
+	t := service.NewTracker("tracking.json")
+	proto.RegisterTrackerServer(s, t)
 	if err := s.Serve(lis); err != nil {
 		panic(err)
 	}
+	s.Stop()
+	t.Close()
 }

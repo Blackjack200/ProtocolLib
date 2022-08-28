@@ -1,0 +1,20 @@
+{
+    "name": "blackjack200/protocol-lib",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "": "php_client/src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Blackjack200",
+            "email": "lx826444126@gmail.com"
+        }
+    ],
+    "require": {
+        "grpc/grpc": "^1.42",
+        "google/protobuf": "^3.21",
+        "ext-grpc": "*"
+    }
+}

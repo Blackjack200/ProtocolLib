@@ -1,8 +1,9 @@
 .idea
 .DS_Store
 
-/old/vendor/
+vendor
 /old/config.yml
 
 go_out/
 php_out/
+/protocol_lib_server
