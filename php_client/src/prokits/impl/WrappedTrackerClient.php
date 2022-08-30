@@ -11,7 +11,6 @@ use prokits\protocol\LoginResponse;
 use prokits\protocol\LoginStatusCode;
 use prokits\protocol\NodeInfo;
 use prokits\protocol\NodeInfoResponse;
-use prokits\protocol\NodePerformanceInfo;
 use prokits\protocol\SelectServerRequest;
 use prokits\protocol\SelectServerResponse;
 use prokits\protocol\TrackerClient;
@@ -32,6 +31,8 @@ class WrappedTrackerClient {
 	) {
 		$this->bus = new Bus();
 	}
+
+	public function setCollector(DataCollectorInterface $collector) : void { $this->collector = $collector; }
 
 	public function getClient() : ?TrackerClient { return $this->client; }
 
@@ -84,19 +85,7 @@ class WrappedTrackerClient {
 	}
 
 	private function obtainNodeInfo() : NodeInfo {
-		return (new NodeInfo())
-			->setNodeId($this->nodeId)
-			->setCanJoin($this->collector->collectCanJoin())
-			->setMaxOnlinePlayers($this->collector->collectMaxOnlinePlayers())
-			->setOnlinePlayers($this->collector->collectOnlinePlayers())
-			->setInGamePlayers($this->collector->collectInGamePlayers())
-			->setPerformanceInfo($this->obtainPerformanceInfo());
-	}
-
-	private function obtainPerformanceInfo() : NodePerformanceInfo {
-		return (new NodePerformanceInfo())
-			->setAverageTps($this->collector->collectAverageTps())
-			->setTps($this->collector->collectTps());
+		return $this->collector->getNodeInfo();
 	}
 
 	private function checkStatus(stdClass $status) : void {
