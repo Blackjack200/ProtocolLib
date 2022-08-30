@@ -87,6 +87,7 @@ class WrappedTrackerClient {
 			->setCanJoin($this->collector->collectCanJoin())
 			->setMaxOnlinePlayers($this->collector->collectMaxOnlinePlayers())
 			->setOnlinePlayers($this->collector->collectOnlinePlayers())
+			->setInGamePlayers($this->collector->collectInGamePlayers())
 			->setPerformanceInfo($this->obtainPerformanceInfo());
 	}
 

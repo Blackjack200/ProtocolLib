@@ -87,7 +87,7 @@ func (t *Tracker) Heartbeat(_ context.Context, info *proto.NodeInfo) (*proto.Hea
 	if s, ok := t.sessions[info.NodeId]; ok {
 		s.Info = info
 		s.LastActive = time.Now()
-		logrus.Infof("heartbeat id=%v", info.NodeId)
+		logrus.Debugf("heartbeat id=%v", info.NodeId)
 		old := t.pendingBroadcast[info.NodeId]
 		t.pendingBroadcast[info.NodeId] = nil
 		return &proto.HeartbeatResponse{Msg: old}, nil

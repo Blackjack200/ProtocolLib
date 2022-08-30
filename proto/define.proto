@@ -13,8 +13,10 @@ message NodeInfo{
   string node_id = 1;
   bool canJoin = 2;
   repeated string online_players = 3;
-  int32 max_online_players = 4;
-  NodePerformanceInfo performance_info = 5;
+  repeated string in_game_players = 4;
+  reserved 5, 6;
+  int32 max_online_players = 7;
+  NodePerformanceInfo performance_info = 8;
 }
 
 message LoginRequest{

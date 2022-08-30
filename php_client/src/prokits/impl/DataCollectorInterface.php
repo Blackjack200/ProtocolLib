@@ -11,5 +11,7 @@ interface DataCollectorInterface {
 
 	public function collectOnlinePlayers() : array;
 
+	public function collectInGamePlayers() : array;
+
 	public function collectCanJoin() : bool;
 }

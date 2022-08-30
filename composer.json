@@ -3,7 +3,10 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "": "php_client/src/"
+            "": [
+                "php_client/src/",
+                "php_client/proto_src/"
+            ]
         }
     },
     "authors": [

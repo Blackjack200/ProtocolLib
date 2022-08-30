@@ -26,11 +26,15 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
      */
     private $online_players;
     /**
-     * Generated from protobuf field <code>int32 max_online_players = 4;</code>
+     * Generated from protobuf field <code>repeated string in_game_players = 4;</code>
+     */
+    private $in_game_players;
+    /**
+     * Generated from protobuf field <code>int32 max_online_players = 7;</code>
      */
     protected $max_online_players = 0;
     /**
-     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 5;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 8;</code>
      */
     protected $performance_info = null;
 
@@ -43,6 +47,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
      *     @type string $node_id
      *     @type bool $canJoin
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $online_players
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $in_game_players
      *     @type int $max_online_players
      *     @type \prokits\protocol\NodePerformanceInfo $performance_info
      * }
@@ -119,7 +124,29 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 max_online_players = 4;</code>
+     * Generated from protobuf field <code>repeated string in_game_players = 4;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getInGamePlayers()
+    {
+        return $this->in_game_players;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string in_game_players = 4;</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setInGamePlayers($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->in_game_players = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 max_online_players = 7;</code>
      * @return int
      */
     public function getMaxOnlinePlayers()
@@ -128,7 +155,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 max_online_players = 4;</code>
+     * Generated from protobuf field <code>int32 max_online_players = 7;</code>
      * @param int $var
      * @return $this
      */
@@ -141,7 +168,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 5;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 8;</code>
      * @return \prokits\protocol\NodePerformanceInfo|null
      */
     public function getPerformanceInfo()
@@ -160,7 +187,7 @@ class NodeInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 5;</code>
+     * Generated from protobuf field <code>.NodePerformanceInfo performance_info = 8;</code>
      * @param \prokits\protocol\NodePerformanceInfo $var
      * @return $this
      */
