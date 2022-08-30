@@ -3,7 +3,7 @@
 namespace prokits\impl;
 
 class FallbackDataCollector implements DataCollectorInterface {
-	public function collectTps() : int { return 20; }
+	public function collectTps() : float { return 20; }
 
 	public function collectAverageTps() : float { return 20; }
 

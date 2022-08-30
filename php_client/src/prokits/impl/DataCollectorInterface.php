@@ -3,7 +3,7 @@
 namespace prokits\impl;
 
 interface DataCollectorInterface {
-	public function collectTps() : int;
+	public function collectTps() : float;
 
 	public function collectAverageTps() : float;
 

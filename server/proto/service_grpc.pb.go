@@ -25,7 +25,7 @@ const _ = grpc.SupportPackageIsVersion7
 type TrackerClient interface {
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Heartbeat(ctx context.Context, in *NodeInfo, opts ...grpc.CallOption) (*HeartbeatResponse, error)
-	GetAllPerformanceInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*PerformanceInfoResponse, error)
+	GetAllNodeInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*NodeInfoResponse, error)
 	Broadcast(ctx context.Context, in *BroadcastMessage, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	Select(ctx context.Context, in *SelectServerRequest, opts ...grpc.CallOption) (*SelectServerResponse, error)
 	Quit(ctx context.Context, in *QuitRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -57,9 +57,9 @@ func (c *trackerClient) Heartbeat(ctx context.Context, in *NodeInfo, opts ...grp
 	return out, nil
 }
 
-func (c *trackerClient) GetAllPerformanceInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*PerformanceInfoResponse, error) {
-	out := new(PerformanceInfoResponse)
-	err := c.cc.Invoke(ctx, "/Tracker/GetAllPerformanceInfo", in, out, opts...)
+func (c *trackerClient) GetAllNodeInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*NodeInfoResponse, error) {
+	out := new(NodeInfoResponse)
+	err := c.cc.Invoke(ctx, "/Tracker/GetAllNodeInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +99,7 @@ func (c *trackerClient) Quit(ctx context.Context, in *QuitRequest, opts ...grpc.
 type TrackerServer interface {
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Heartbeat(context.Context, *NodeInfo) (*HeartbeatResponse, error)
-	GetAllPerformanceInfo(context.Context, *emptypb.Empty) (*PerformanceInfoResponse, error)
+	GetAllNodeInfo(context.Context, *emptypb.Empty) (*NodeInfoResponse, error)
 	Broadcast(context.Context, *BroadcastMessage) (*emptypb.Empty, error)
 	Select(context.Context, *SelectServerRequest) (*SelectServerResponse, error)
 	Quit(context.Context, *QuitRequest) (*emptypb.Empty, error)
@@ -116,8 +116,8 @@ func (UnimplementedTrackerServer) Login(context.Context, *LoginRequest) (*LoginR
 func (UnimplementedTrackerServer) Heartbeat(context.Context, *NodeInfo) (*HeartbeatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Heartbeat not implemented")
 }
-func (UnimplementedTrackerServer) GetAllPerformanceInfo(context.Context, *emptypb.Empty) (*PerformanceInfoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllPerformanceInfo not implemented")
+func (UnimplementedTrackerServer) GetAllNodeInfo(context.Context, *emptypb.Empty) (*NodeInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllNodeInfo not implemented")
 }
 func (UnimplementedTrackerServer) Broadcast(context.Context, *BroadcastMessage) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Broadcast not implemented")
@@ -177,20 +177,20 @@ func _Tracker_Heartbeat_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Tracker_GetAllPerformanceInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Tracker_GetAllNodeInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrackerServer).GetAllPerformanceInfo(ctx, in)
+		return srv.(TrackerServer).GetAllNodeInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Tracker/GetAllPerformanceInfo",
+		FullMethod: "/Tracker/GetAllNodeInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackerServer).GetAllPerformanceInfo(ctx, req.(*emptypb.Empty))
+		return srv.(TrackerServer).GetAllNodeInfo(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -265,8 +265,8 @@ var Tracker_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Tracker_Heartbeat_Handler,
 		},
 		{
-			MethodName: "GetAllPerformanceInfo",
-			Handler:    _Tracker_GetAllPerformanceInfo_Handler,
+			MethodName: "GetAllNodeInfo",
+			Handler:    _Tracker_GetAllNodeInfo_Handler,
 		},
 		{
 			MethodName: "Broadcast",

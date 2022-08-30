@@ -4,7 +4,7 @@ option go_package = "proto/";
 option php_namespace = "prokits\\protocol";
 
 message NodePerformanceInfo {
-  int32 tps = 1;
+  float tps = 1;
   float average_tps = 2;
   reserved 3, 6;
 }
@@ -39,10 +39,6 @@ message QuitRequest {
   string node_id = 1;
 }
 
-message PerformanceInfoResponse{
-  map<string, NodePerformanceInfo> info = 1;
-}
-
 message BroadcastMessage{
   string node_id = 1;
   string topic = 2;
@@ -60,4 +56,8 @@ message SelectServerRequest{
 
 message SelectServerResponse {
   optional string target_node_id = 1;
+}
+
+message NodeInfoResponse{
+  map<string, NodeInfo> info = 1;
 }

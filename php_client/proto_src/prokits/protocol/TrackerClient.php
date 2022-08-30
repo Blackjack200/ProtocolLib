@@ -50,11 +50,11 @@ class TrackerClient extends \Grpc\BaseStub {
      * @param array $options call options
      * @return \Grpc\UnaryCall
      */
-    public function GetAllPerformanceInfo(\Google\Protobuf\GPBEmpty $argument,
+    public function GetAllNodeInfo(\Google\Protobuf\GPBEmpty $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/Tracker/GetAllPerformanceInfo',
+        return $this->_simpleRequest('/Tracker/GetAllNodeInfo',
         $argument,
-        ['\prokits\protocol\PerformanceInfoResponse', 'decode'],
+        ['\prokits\protocol\NodeInfoResponse', 'decode'],
         $metadata, $options);
     }
 

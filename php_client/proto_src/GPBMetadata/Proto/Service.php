@@ -18,12 +18,12 @@ class Service
         \GPBMetadata\Google\Protobuf\GPBEmpty::initOnce();
         $pool->internalAddGeneratedFile(
             '
-Ÿ
-proto/service.protogoogle/protobuf/empty.proto2Å
+‘
+proto/service.protogoogle/protobuf/empty.proto2·
 Tracker&
 Login.LoginRequest.LoginResponse*
-	Heartbeat	.NodeInfo.HeartbeatResponseI
-GetAllPerformanceInfo.google.protobuf.Empty.PerformanceInfoResponse6
+	Heartbeat	.NodeInfo.HeartbeatResponse;
+GetAllNodeInfo.google.protobuf.Empty.NodeInfoResponse6
 	Broadcast.BroadcastMessage.google.protobuf.Empty5
 Select.SelectServerRequest.SelectServerResponse,
 Quit.QuitRequest.google.protobuf.EmptyBZproto/Êprokits\\protocolbproto3'

@@ -69,18 +69,6 @@ func (t *Tracker) Login(_ context.Context, request *proto.LoginRequest) (*proto.
 	}, nil
 }
 
-func (t *Tracker) GetAllPerformanceInfo(_ context.Context, _ *emptypb.Empty) (*proto.PerformanceInfoResponse, error) {
-	t.mu.RLock()
-	defer t.mu.RUnlock()
-	info := make(map[string]*proto.NodePerformanceInfo, len(t.sessions))
-	for nodeId, session := range t.sessions {
-		info[nodeId] = session.Info.PerformanceInfo
-	}
-	return &proto.PerformanceInfoResponse{
-		Info: info,
-	}, nil
-}
-
 func (t *Tracker) Heartbeat(_ context.Context, info *proto.NodeInfo) (*proto.HeartbeatResponse, error) {
 	t.mu.Lock()
 	defer t.mu.Unlock()
@@ -122,6 +110,16 @@ func (t *Tracker) Broadcast(_ context.Context, msg *proto.BroadcastMessage) (*em
 		t.pendingBroadcast[id] = append(t.pendingBroadcast[id], msg)
 	}
 	return &emptypb.Empty{}, nil
+}
+
+func (t *Tracker) GetAllNodeInfo(context.Context, *emptypb.Empty) (*proto.NodeInfoResponse, error) {
+	t.mu.RLock()
+	defer t.mu.RUnlock()
+	m := make(map[string]*proto.NodeInfo, len(t.sessions))
+	for id, s := range t.sessions {
+		m[id] = s.Info
+	}
+	return &proto.NodeInfoResponse{Info: m}, nil
 }
 
 func (t *Tracker) quitNoLock(nodeId string) {

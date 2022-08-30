@@ -2,6 +2,7 @@
 
 namespace prokits\impl;
 
+use Google\Protobuf\GPBEmpty;
 use Grpc\ChannelCredentials;
 use prokits\protocol\BroadcastMessage;
 use prokits\protocol\HeartbeatResponse;
@@ -9,6 +10,7 @@ use prokits\protocol\LoginRequest;
 use prokits\protocol\LoginResponse;
 use prokits\protocol\LoginStatusCode;
 use prokits\protocol\NodeInfo;
+use prokits\protocol\NodeInfoResponse;
 use prokits\protocol\NodePerformanceInfo;
 use prokits\protocol\SelectServerRequest;
 use prokits\protocol\SelectServerResponse;
@@ -141,5 +143,25 @@ class WrappedTrackerClient {
 
 	public function subscribe(string $topic, \Closure $handler) : void {
 		$this->bus->subscribe($topic, $handler);
+	}
+
+	/**
+	 * @return NodeInfo[]
+	 */
+	public function getAllNodeInfo() : array {
+		if (!$this->checkConnection()) {
+			return [];
+		}
+		[$response, $status] = $this->client->GetAllNodeInfo(new GPBEmpty())->wait();
+		$this->checkStatus($status);
+		if ($response instanceof NodeInfoResponse) {
+			$ret = [];
+			foreach ($response->getInfo() as $key => $val) {
+				assert($val instanceof NodeInfo);
+				$ret[$key] = $val;
+			}
+			return $ret;
+		}
+		return [];
 	}
 }

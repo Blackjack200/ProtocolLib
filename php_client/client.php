@@ -16,5 +16,6 @@ while (true) {
 	$client->heartbeat();
 	$client->publish("topic", "hi!");
 	var_dump($client->select('slave'));
+	var_dump(($client->getAllNodeInfo()));
 	sleep(1);
 }

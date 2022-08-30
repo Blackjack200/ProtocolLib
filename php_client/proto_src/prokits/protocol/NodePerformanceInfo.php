@@ -14,9 +14,9 @@ use Google\Protobuf\Internal\GPBUtil;
 class NodePerformanceInfo extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>int32 tps = 1;</code>
+     * Generated from protobuf field <code>float tps = 1;</code>
      */
-    protected $tps = 0;
+    protected $tps = 0.0;
     /**
      * Generated from protobuf field <code>float average_tps = 2;</code>
      */
@@ -28,7 +28,7 @@ class NodePerformanceInfo extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type int $tps
+     *     @type float $tps
      *     @type float $average_tps
      * }
      */
@@ -38,8 +38,8 @@ class NodePerformanceInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 tps = 1;</code>
-     * @return int
+     * Generated from protobuf field <code>float tps = 1;</code>
+     * @return float
      */
     public function getTps()
     {
@@ -47,13 +47,13 @@ class NodePerformanceInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 tps = 1;</code>
-     * @param int $var
+     * Generated from protobuf field <code>float tps = 1;</code>
+     * @param float $var
      * @return $this
      */
     public function setTps($var)
     {
-        GPBUtil::checkInt32($var);
+        GPBUtil::checkFloat($var);
         $this->tps = $var;
 
         return $this;
