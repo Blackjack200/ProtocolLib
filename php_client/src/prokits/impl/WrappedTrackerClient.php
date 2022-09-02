@@ -61,7 +61,7 @@ class WrappedTrackerClient {
 
 	public function connect() : void {
 		$client = new TrackerClient($this->hostname, ['credentials' => ChannelCredentials::createInsecure()]);
-		if ($client->waitForReady($this->timeoutSec * 1000000)) {
+		if ($this->waitForAlready($client)) {
 			[$response, $status] = $this->tryLogin($client);
 			$this->checkStatus($status);
 			if ($response === null) {
@@ -85,7 +85,7 @@ class WrappedTrackerClient {
 	}
 
 	private function obtainNodeInfo() : NodeInfo {
-		return $this->collector->getNodeInfo();
+		return $this->collector->getNodeInfo()->setNodeId($this->nodeId);
 	}
 
 	private function checkStatus(stdClass $status) : void {
@@ -152,5 +152,9 @@ class WrappedTrackerClient {
 			return $ret;
 		}
 		return [];
+	}
+
+	private function waitForAlready(TrackerClient $client) : bool {
+		return $client->waitForReady($this->timeoutSec * 1000000);
 	}
 }

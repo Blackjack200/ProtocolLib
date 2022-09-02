@@ -5,6 +5,7 @@ import "google/protobuf/empty.proto";
 
 option go_package = "proto/";
 option php_namespace = "prokits\\protocol";
+option php_generic_services=true;
 
 service Tracker{
   rpc Login(LoginRequest) returns(LoginResponse);

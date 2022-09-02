@@ -2,6 +2,7 @@ syntax = "proto3";
 
 option go_package = "proto/";
 option php_namespace = "prokits\\protocol";
+option php_generic_services=true;
 
 message NodePerformanceInfo {
   float tps = 1;

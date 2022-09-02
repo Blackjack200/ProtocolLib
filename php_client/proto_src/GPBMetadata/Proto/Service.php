@@ -18,7 +18,7 @@ class Service
         \GPBMetadata\Google\Protobuf\GPBEmpty::initOnce();
         $pool->internalAddGeneratedFile(
             '
-ë
+î
 proto/service.protogoogle/protobuf/empty.proto2∑
 Tracker&
 Login.LoginRequest.LoginResponse*
@@ -26,7 +26,7 @@ class Service
 GetAllNodeInfo.google.protobuf.Empty.NodeInfoResponse6
 	Broadcast.BroadcastMessage.google.protobuf.Empty5
 Select.SelectServerRequest.SelectServerResponse,
-Quit.QuitRequest.google.protobuf.EmptyBZproto/ prokits\\protocolbproto3'
+Quit.QuitRequest.google.protobuf.EmptyBZproto/ prokits\\protocol–bproto3'
         , true);
 
         static::$is_initialized = true;

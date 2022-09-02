@@ -21,7 +21,7 @@ type Tracker struct {
 	proto.UnimplementedTrackerServer
 	mu               sync.RWMutex
 	running          atomic.Bool
-	sessions         map[string]nodeSession
+	sessions         map[string]*nodeSession
 	pendingBroadcast map[string][]*proto.BroadcastMessage
 	file             string
 }
@@ -31,7 +31,7 @@ func NewTracker(file string) *Tracker {
 		UnimplementedTrackerServer: proto.UnimplementedTrackerServer{},
 		mu:                         sync.RWMutex{},
 		running:                    atomic.Bool{},
-		sessions:                   make(map[string]nodeSession),
+		sessions:                   make(map[string]*nodeSession),
 		pendingBroadcast:           make(map[string][]*proto.BroadcastMessage),
 		file:                       file,
 	}
@@ -58,7 +58,7 @@ func (t *Tracker) Login(_ context.Context, request *proto.LoginRequest) (*proto.
 		}, nil
 	}
 	logrus.Infof("connected id=%v type=%v", request.NodeId, request.Type)
-	t.sessions[request.NodeId] = nodeSession{
+	t.sessions[request.NodeId] = &nodeSession{
 		ServerType: request.Type,
 		Info:       request.Info,
 		LastActive: time.Now(),
