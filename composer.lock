@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e97a529b44ba81ba353d4c543a208867",
+    "content-hash": "82fc7c68e58ff54fe81f9ff1d3c1cd8d",
     "packages": [
         {
             "name": "google/protobuf",
-            "version": "v3.21.5",
+            "version": "v3.23.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "70649d33d2b6e8fd0db6d9b6fffc7f46f01f1438"
+                "reference": "2349098298b847814e3af4f6452ec43c65c8c4fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/70649d33d2b6e8fd0db6d9b6fffc7f46f01f1438",
-                "reference": "70649d33d2b6e8fd0db6d9b6fffc7f46f01f1438",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/2349098298b847814e3af4f6452ec43c65c8c4fb",
+                "reference": "2349098298b847814e3af4f6452ec43c65c8c4fb",
                 "shasum": ""
             },
             "require": {
@@ -46,22 +46,22 @@
                 "proto"
             ],
             "support": {
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.21.5"
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.23.2"
             },
-            "time": "2022-08-09T19:53:56+00:00"
+            "time": "2023-05-25T22:33:09+00:00"
         },
         {
             "name": "grpc/grpc",
-            "version": "1.42.0",
+            "version": "1.52.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/grpc/grpc-php.git",
-                "reference": "9fa44f104cb92e924d4da547323a97f3d8aca6d4"
+                "reference": "98394cd601a587ca68294e6209bd713856969105"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/9fa44f104cb92e924d4da547323a97f3d8aca6d4",
-                "reference": "9fa44f104cb92e924d4da547323a97f3d8aca6d4",
+                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/98394cd601a587ca68294e6209bd713856969105",
+                "reference": "98394cd601a587ca68294e6209bd713856969105",
                 "shasum": ""
             },
             "require": {
@@ -90,9 +90,9 @@
                 "rpc"
             ],
             "support": {
-                "source": "https://github.com/grpc/grpc-php/tree/v1.42.0"
+                "source": "https://github.com/grpc/grpc-php/tree/v1.52.0"
             },
-            "time": "2021-11-19T08:13:51+00:00"
+            "time": "2023-02-25T05:20:08+00:00"
         }
     ],
     "packages-dev": [],
@@ -101,7 +101,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-grpc": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
 }
