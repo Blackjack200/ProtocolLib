@@ -2,6 +2,7 @@
 
 namespace prokits\impl;
 
+use Closure;
 use Google\Protobuf\GPBEmpty;
 use Grpc\ChannelCredentials;
 use prokits\protocol\BroadcastMessage;
@@ -23,16 +24,14 @@ class WrappedTrackerClient {
 	private Bus $bus;
 
 	public function __construct(
-		private string                 $hostname,
-		private DataCollectorInterface $collector,
-		private string                 $nodeId,
-		private string                 $type,
-		private int                    $timeoutSec = 5
+		private readonly string  $hostname,
+		private readonly string  $nodeId,
+		private readonly string  $type,
+		private readonly Closure $nodeInfoFunc,
+		private readonly int     $timeoutSec = 5
 	) {
 		$this->bus = new Bus();
 	}
-
-	public function setCollector(DataCollectorInterface $collector) : void { $this->collector = $collector; }
 
 	public function getClient() : ?TrackerClient { return $this->client; }
 
@@ -82,10 +81,6 @@ class WrappedTrackerClient {
 			->setType($this->type)
 			->setInfo($this->obtainNodeInfo()))
 			->wait();
-	}
-
-	private function obtainNodeInfo() : NodeInfo {
-		return $this->collector->getNodeInfo()->setNodeId($this->nodeId);
 	}
 
 	private function checkStatus(stdClass $status) : void {
@@ -156,5 +151,9 @@ class WrappedTrackerClient {
 
 	private function waitForAlready(TrackerClient $client) : bool {
 		return $client->waitForReady($this->timeoutSec * 1000000);
+	}
+
+	private function obtainNodeInfo() : NodeInfo {
+		return ($this->nodeInfoFunc)()->setNodeId($this->nodeId);
 	}
 }
